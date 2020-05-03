@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href=" uikit.min.css" />
+    </head>
+    <body>
+        <header>
+            <div class="uk-cover-container my-skew">
+                <img src="bdg.jpg"  alt="" height="300" style="height: 670px; width: 100%;" uk-cover/>
+                <div class="blur">
+                    <div class="uk-cover-container has-wdt-hg no-skew">
+                        <div class="uk-text-middle cell-table">
+                            <h1  class="uk-text-center@s uk-text-bolder gradiant-title">Bienvenue Dans Automate Calculator</h1>
+                            <div class="center-buttun">
+                                <a href="#start" class="uk-button uk-text-bolder uk-button-default uk-button-large gradiant-title">commencer votre travail</a>
+                            </div>
+                            <div class="center-buttun my-padding">
+                                <h5 class="uk-text-center@s uk-text-bolder gradiant-title">pour utiliser notre calculator il faut respecter certain syntex :</h5>
+                                <ul class="uk-list color-white">
+                                    <li>Pour ecrire des état composé il faut les Séparer par ',' ex -> s0,s1</li>
+                                    <li>Les état 'P0,P1,...' et 'A0,A1,....' interdit a utilisé</li>
+                                    <li>L'epsilon Se Représent Par ' $ '</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="uk-section uk-section-default padding-small" id="start">
+            <div class="uk-container">
+                <div class="uk-panel uk-light uk-margin-medium">
+                    <h2  class="uk-text-center@s uk-text-bolder gradiant-title">Saisir Votre Automate</h2>
+                </div>
+                <div class="uk-child-width-expand@s uk-text-center uk-grid" >
+                    <div>
+                        <div class="uk-panel uk-light uk-margin-small">
+                            <h4 class="uk-text-center@s uk-text-bolder gradiant-title">Représentation Par Tableau</h4>
+                        </div>
+                        <div>
+                            <table class="tb_tp uk-table uk-table-striped" id="first-table">
+                                <tr class="__tt">
+                                    <td colspan="2"></td>
+                                    <td class="__add_lgn">add ligne</td>
+                                    <td class="__add_cl">add colon</td>
+                                    <td contenteditable="true"></td>
+                                </tr>
+                                <tr class="__tt">
+                                    <td class="-fr_fnl">
+                                        <input type="checkbox" class="uk-checkbox">
+                                        <label for="">
+                                            finale
+                                        </label>
+                                    </td>
+                                    <td class="-fr_init">
+                                        <input type="checkbox" class="uk-checkbox">
+                                        <label for="">
+                                            initial
+                                        </label>
+                                    </td>
+                                    <td colspan="2" contenteditable="true"></td>
+                                    <td contenteditable="true"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="uk-panel uk-light uk-margin-small">
+                            <h4 class="uk-text-center@s uk-text-bolder gradiant-title">Représentation Graphique</h4>
+                        </div>
+                        <div class="uk-position-relative">
+                            <canvas id="automate_graphe" width="550" height="300" class="automate_canvas"></canvas>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+        </div>
+        <div class="uk-section uk-section-default padding-small" id="operation">
+            <h3 class="uk-text-center@s uk-text-bolder gradiant-title">Choisir une Opération</h3>
+            <div class="center-buttun">
+                <div class="uk-button-group">
+                    <a class="uk-button uk-text-bolder uk-button-default uk-button-meduim gradiant-title reduction" href="#operation">Rendre L'Automate Simple</a>
+                    <a class="uk-button uk-text-bolder uk-button-default uk-button-meduim gradiant-title determinist" href="#operation">Rendre L'Automate Déterministe / Reduire L'Automate</a>
+                    <a class="uk-button uk-text-bolder uk-button-default uk-button-meduim gradiant-title complet" href="#operation">Rendre L'Automate Complet</a>
+                    <a class="uk-button uk-text-bolder uk-button-default uk-button-meduim gradiant-title complement" href="#operation">Complément De L'Automate</a>
+                </div>
+            </div>
+            <div class="center-buttun">
+                <div class="uk-button-group">
+                    <a class="uk-button uk-text-bolder uk-button-default uk-button-meduim gradiant-title miroir" href="#operation">Miroir de L'Automate</a>
+                    <a class="uk-button uk-text-bolder uk-button-default uk-button-meduim gradiant-title get_mot" href="#operation">Reconaitre une Mot</a>
+                </div>
+            </div>
+        </div>
+        <div class="uk-section uk-section-default padding-small">
+            <h3  class="uk-text-center@s uk-text-bolder gradiant-title">La Résultat de votre Opération</h3>
+            <div class="uk-child-width-expand@s uk-text-center">
+                <div class="center-buttun">
+                    <div class="uk-form trace_">
+                        <div class="for_mot data-uk-margin">
+                        </div>
+                        <div class="_trace"></div>
+                    </div>
+                    <div class="__rslt_op uk-child-width-expand@s uk-text-center uk-grid">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="uk-section uk-section-default padding-small no-border">
+            <div class="my-skew my-footer">
+                <div class="uk-cover-container has-wdt-hg padding-small no-border no-skew">
+                    <div class="uk-child-width-expand@s uk-text-center uk-grid" >
+                        <div class="center-buttun my-padding">
+                            <h3 class="uk-text-center@s uk-text-bolder gradiant-title">TP THP | Automate Calculator</h3>
+                            <p class="uk-text-center@s uk-text-bolder color-white">
+                                Automate Calculator Mini TP pour faire les déférente opération sur les automate d'état fini
+                                réaliser dans le module de théorie de langage
+                            </p>
+                        </div>
+                        <div class="center-buttun my-padding">
+                            <h3 class="uk-text-left@s uk-text-bolder gradiant-title">Réaliser Par </h3>
+                            <ul class="uk-list color-white">
+                                <li><h4 class="uk-text-left@s uk-text-bolder gradiant-title">KHEDRI ZINEDDINE <strong>/ 1CS G06</strong></h4></li>
+                                <li><h4 class="uk-text-left@s uk-text-bolder gradiant-title">CHAKRAR MOHAMED EL AMINE <strong>/ 1CS G06</strong></h4></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h5 class="uk-text-center@s uk-text-bolder gradiant-title">Automate Calculator, TP THP, à Esi Alger | 2020 © Tous droits réservés</h5>
+        </footer>
+    </body>
+    <script src="jquery.min.js" type="text/javascript"></script>
+    <script src="function.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var s=[],s0=[],f=[],ie=[],x=[];
+        $('.__add_lgn').click(function(){
+            let lign='<tr class="__tt"><td class="-fr_fnl"><input type="checkbox" class="uk-checkbox"/><label for="">finale</label></td><td class="-fr_init"><input type="checkbox" class="uk-checkbox"/><label for="">initial</label></td><td colspan="2" contenteditable="true"></td>';
+            let i,indx=$('.__tt').eq(0).find('td').length-3
+            for(i=0;i<indx;i++) lign+='<td contenteditable="true"></td>';
+            lign+='</tr>';
+            $('.tb_tp').append(lign)
+        })
+        $('.__add_cl').click(function(){
+                $('.__tt').append('<td contenteditable="true"></td>')
+        })
+        $('.reduction').click(function(){
+            $('._trace').html('')
+            $('.trace_').removeClass('padding-small')
+            $('.for_mot').html('')
+            $('.result-deter').remove()
+            $('.result-reduction').remove()
+            s=[],s0=[],f=[],ie=[],x=[];
+            metr_automat_table(x,s,s0,f,ie)
+            rendre_simple(x,s,ie,f)
+            affiche_simple(s,x,ie,f,s0,"Votre Automate Simple")
+            draw_automat(x,s0,s,f,ie)
+        })
+        $('.complet').click(function(){
+            $('._trace').html('')
+            $('.trace_').removeClass('padding-small')
+            $('.for_mot').html('')
+            $('.result-deter').remove()
+            $('.result-reduction').remove()
+            s=[],s0=[],f=[],ie=[],x=[];
+            metr_automat_table(x,s,s0,f,ie)
+            rendre_simple(x,s,ie,f)
+            affiche_simple(s,x,ie,f,s0,"Votre Automate Simple")
+            var xdtr=x,sdtr=[],s0dtr=[],fdtr=[],iedtr=[];
+            to_determinist(sdtr,s0dtr,fdtr,iedtr)
+            auto_complet(xdtr,sdtr,iedtr)
+            afiche_determi(sdtr,fdtr,s0dtr,iedtr,'Votre Automate Complet')
+        })
+        $('.miroir').click(function(){
+            $('._trace').html('')
+            $('.trace_').removeClass('padding-small')
+            $('.for_mot').html('')
+            $('.result-deter').remove()
+            $('.result-reduction').remove()
+            s=[],s0=[],f=[],ie=[],x=[];
+            metr_automat_table(x,s,s0,f,ie)
+            rendre_simple(x,s,ie,f)
+            affiche_simple(s,x,ie,f,s0,"Votre Automate Simple")
+            var xdtr=x,sdtr=[],s0dtr=[],fdtr=[],iedtr=[];
+            to_determinist(sdtr,s0dtr,fdtr,iedtr)
+            var tmptb=s0dtr;
+            s0dtr=fdtr;
+            fdtr=tmptb;
+            var reslt=miroir_automate(xdtr,iedtr,sdtr,s0dtr)
+            iedtr=reslt[0];
+            s0dtr=reslt[1];
+            afiche_determi(sdtr,fdtr,s0dtr,iedtr,'La Miroire de votre Automate')
+        })
+        $('.complement').click(function(){
+            $('._trace').html('')
+            $('.trace_').removeClass('padding-small')
+            $('.for_mot').html('')
+            $('.result-deter').remove()
+            $('.result-reduction').remove()
+            s=[],s0=[],f=[],ie=[],x=[];
+            metr_automat_table(x,s,s0,f,ie)
+            rendre_simple(x,s,ie,f)
+            affiche_simple(s,x,ie,f,s0,"Votre Automate Simple")
+            var xdtr=x,sdtr=[],s0dtr=[],fdtr=[],iedtr=[];
+            to_determinist(sdtr,s0dtr,fdtr,iedtr)
+            auto_complet(xdtr,sdtr,iedtr)
+            fdtr=complement_automat(sdtr,fdtr)
+            afiche_determi(sdtr,fdtr,s0dtr,iedtr,'le Complément de votre Automate')
+        })
+        $('.determinist').click(function(){
+            $('._trace').html('')
+            $('.trace_').removeClass('padding-small')
+            $('.for_mot').html('')
+            $('.result-deter').remove()
+            $('.result-reduction').remove()
+            s=[],s0=[],f=[],ie=[],x=[];
+            metr_automat_table(x,s,s0,f,ie)
+            rendre_simple(x,s,ie,f)
+            affiche_simple(s,x,ie,f,s0,"Votre Automate Simple")
+            var xdtr=x,sdtr=[],s0dtr=[],fdtr=[],iedtr=[];
+            to_determinist(sdtr,s0dtr,fdtr,iedtr)
+            afiche_determi(sdtr,fdtr,s0dtr,iedtr,'Votre Automate Simple Déterminist')
+       })
+       $('.get_mot').click(function(){
+            $('._trace').html('')
+            $('.trace_').addClass('padding-small')
+            $('.result-deter').remove()
+            $('.result-reduction').remove()
+            s=[],s0=[],f=[],ie=[],x=[];
+            metr_automat_table(x,s,s0,f,ie)
+            rendre_simple(x,s,ie,f)
+            affiche_simple(s,x,ie,f,s0,"Votre Automate Simple")
+            var xdtr=x,sdtr=[],s0dtr=[],fdtr=[],iedtr=[];
+            to_determinist(sdtr,s0dtr,fdtr,iedtr)
+            afiche_determi(sdtr,fdtr,s0dtr,iedtr,'Votre Automate Simple Déterminist')
+            $('.for_mot').html('<h5 class="uk-text-bolder gradiant-title">Saiser Votre Mot</h5><input type="text" class="mot_find uk-form-width-large uk-text-bolder uk-padding-small" placeholder="Taper Votre Mot Ici"><button class="__take_mot uk-button uk-text-bolder uk-button-default uk-button-meduim gradiant-title">Valider</button><div class="rslt__fn"></div>');
+            $('.__take_mot').click(function(){
+                $('._trace').html('')
+                take_mot_in($('.mot_find').val(),s0dtr,fdtr,iedtr)
+            })
+       })
+       function draw_final(ctx,cx,cy,etat){
+            ctx.beginPath();
+            ctx.arc(cx, cy, 17 ,0,2* Math.PI);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.arc(cx, cy, 21 ,0,2* Math.PI);
+            ctx.stroke();
+            ctx.font = "16px Verdana";
+            ctx.fillText(etat, cx-9, cy+6);
+       }
+       function draw_init(ctx,cx,cy,etat){
+            ctx.beginPath();
+            ctx.arc(cx, cy, 21 ,0,2* Math.PI);
+            ctx.stroke();
+            ctx.beginPath()
+            ctx.moveTo(cx-40,cy-35);
+            ctx.lineTo(cx-16, cy-12);
+            ctx.moveTo(cx-45,cy-27);
+            ctx.lineTo(cx-20, cy-4);
+            ctx.stroke();
+            ctx.font = "16px Verdana";
+            ctx.fillText(etat, cx-9, cy+6);
+       }
+       function draw_etat(ctx,cx,cy,etat){
+            ctx.beginPath();
+            ctx.arc(cx, cy, 21 ,0,2* Math.PI);
+            ctx.stroke();
+            ctx.font = "16px Verdana";
+            ctx.fillText(etat, cx-9, cy+6);
+       }
+       function draw_trans(ctx,cx1,cy1,cx2,cy2,tran){
+            ctx.beginPath();
+            ctx.moveTo(cx1+21,cy1);
+            ctx.bezierCurveTo(cx1+10, cy1+10,cx2-10,cy2+10, cx2-21, cy2)
+            //ctx.quadraticCurveTo(70,100, cx2-21, cy2);
+            ctx.stroke();
+            ctx.font = "16px Verdana";
+            ctx.fillText(tran,(cx1+cx2)/2, (cy1+cy2)/2);
+       }
+       function draw_meme(ctx,cx1,cy1,cx2,cy2){
+        ctx.beginPath();
+        ctx.moveTo(cx1-15,cy1-15);
+        ctx.bezierCurveTo(10, 10,10,100, cx2-15, cy2+15)
+        //ctx.quadraticCurveTo(10,100, cx2-15, cy2+15);
+        ctx.stroke();
+        }
+        function draw_automat(dx,ds0,ds,df,die){
+            var canvas = document.getElementById('automate_graphe');
+            var ctx = canvas.getContext('2d');
+            var posx=50,posy=50;
+            for(var i=0;i<ds0.length;i++){
+                draw_init(ctx,posx,posy,ds0[i])
+                if(posy<250){
+                    posy+=100;
+                }else{
+                    posy=50;posx+=100;
+                }
+            }
+            posx+=100;
+            for(var i=0;i<ds.length;i++){
+                if(ds0.indexOf(ds[i])==-1 && df.indexOf(ds[i])==-1){
+                    draw_etat(ctx,posx,posy,ds[i])
+                    if(posy<250){
+                        posy+=100;
+                    }else{
+                        posy=50;posx+=100;
+                    }
+                }
+            }
+            posx+=100;
+            for(var i=0;i<df.length;i++){
+                draw_final(ctx,posx,posy,df[i])
+                if(posy<250){
+                    posy+=100;
+                }else{
+                    posy=50;posx+=100;
+                }
+            }
+        }
+       /*
+            draw_final(ctx,50,50,"s2");
+            draw_init(ctx,120,250,"s0");
+            draw_trans(ctx,120,250,50,50,"a");*/
+    </script>
+</html>
